@@ -11,24 +11,32 @@ use Laravel\Socialite\Facades\Socialite;
 
 class LaravelSocialiteController extends Controller
 {
-    public function google() {
-        return Socialite::driver('google')->redirect();
+    public function authRedirection($provider) {
+
+        if ($provider) {
+            return Socialite::driver($provider)->redirect();
+        }
+        abort(404);
     }
 
 
-    public function googleAuthentication(){
-        $googleAuth = Socialite::driver('google')->user();
+    public function providerAuthentication($provider){
+        try {
 
-        $user = User::where('email', $googleAuth->email)->first();
+        $providerAuth = Socialite::driver($provider)->user();
+        
+        $user = User::where('email', $providerAuth->email)->first();
 
         if ( $user) {
             Auth::login($user);
             return redirect()->route('dashboard');
         } else {
             $userData = User::create([
-                'name' => $googleAuth->name,
-                'email' => $googleAuth->email,
-                'google_id' => $googleAuth->id,
+                'name' => $providerAuth->name,
+                'email' => $providerAuth->email,
+                'auth_provider' => $provider,
+                'auth_provider_id' => $providerAuth->id,
+                'auth_provider_token' => $providerAuth->token,
                 'password' => Hash::make('password')
             ]);
 
@@ -37,5 +45,9 @@ class LaravelSocialiteController extends Controller
                 return redirect()->route('dashboard');
             }
         };
+            
+        } catch (\Throwable $th) {
+
+        }
     }
 }

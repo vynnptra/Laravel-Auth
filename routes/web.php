@@ -34,6 +34,7 @@ Route::middleware('guest')->group( function () {
     Route::get('/register', [AuthenticateController::class, 'registerForm'])->name('register.form');
     Route::post('/register', [AuthenticateController::class, 'register'])->name('register');
 
-    Route::get('auth/google-callback', [LaravelSocialiteController::class, 'googleAuthentication'])->name('auth.google-callback');
-    Route::get('auth/google', [LaravelSocialiteController::class, 'google'])->name('login.google');
+    Route::get('auth/redirection/{provider}', [LaravelSocialiteController::class, 'authRedirection'])->name('auth.redirection');
+    Route::get('auth/{provider}/callback', [LaravelSocialiteController::class, 'providerAuthentication'])->name('auth.callback');
+
 });
