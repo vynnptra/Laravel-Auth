@@ -1,4 +1,3 @@
-
 ```markdown
 # Laravel Auth with Socialite (Google, GitHub, Facebook) & Mailtrap
 
@@ -76,7 +75,7 @@ FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
 FACEBOOK_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/facebook/callback
 ```
 
-> ⚠️ **Jangan lupa untuk mengganti `https://your-ngrok-url.ngrok.io` dengan URL Ngrok kamu yang aktif.**
+> ⚠️ Jangan lupa untuk mengganti `https://your-ngrok-url.ngrok.io` dengan URL Ngrok kamu yang aktif.
 
 ---
 
@@ -87,12 +86,12 @@ FACEBOOK_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/facebook/callback
    php artisan serve
    ```
 
-2. Jalankan Ngrok (gantilah port jika perlu):
+2. Jalankan Ngrok:
    ```bash
    ngrok http 8000
    ```
 
-3. Salin URL HTTPS dari Ngrok dan tempelkan di `.env` untuk `*_REDIRECT_URI`.
+3. Salin URL HTTPS dari Ngrok dan tempelkan di `.env` sebagai redirect URI.
 
 ---
 
@@ -106,14 +105,15 @@ php artisan migrate
 
 ## 🧪 Pengujian / Testing
 
-Untuk mencoba fitur lupa password:
-1. Akses halaman login
+### Lupa Password
+1. Buka halaman login
 2. Klik “Lupa Password?”
 3. Masukkan email valid
-4. Periksa inbox email melalui Mailtrap (https://mailtrap.io)
+4. Cek email masuk melalui [Mailtrap](https://mailtrap.io)
 
-Untuk login sosial media:
-- Pastikan URL callback di dashboard Google/GitHub/Facebook sesuai dengan URL Ngrok kamu.
+### Login Sosial Media
+- Pastikan URL callback sesuai dengan URL dari Ngrok yang sedang aktif.
+- Pastikan client ID dan secret sudah diatur di Google/GitHub/Facebook Developer Console.
 
 ---
 
@@ -128,5 +128,6 @@ Untuk login sosial media:
 
 **Kevin Putra Pratama**  
 Pelajar RPL di SMKN1 Tengaran  
-[GitHub](https://github.com/vynnptra) | kevinnputraapratamaa@gmail.com
+[GitHub](https://github.com/vynnptra)  
+Email: kevinnputraapratamaa@gmail.com
 ```
