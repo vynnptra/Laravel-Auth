@@ -1,66 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+```markdown
+# Laravel Auth with Socialite (Google, GitHub, Facebook) & Mailtrap
 
-## About Laravel
+## 📌 Deskripsi Proyek / Project Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🇮🇩 Bahasa Indonesia
+Project ini adalah implementasi sistem autentikasi dengan Laravel yang terintegrasi dengan **Laravel Socialite** untuk login menggunakan akun sosial media seperti **Google**, **GitHub**, dan **Facebook**. Fitur lainnya termasuk **lupa password** yang mengirim email reset password melalui **Mailtrap**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Karena menggunakan login sosial media, kamu **perlu menggunakan Ngrok** agar callback URL bisa diakses oleh pihak ketiga (Google, GitHub, dan Facebook).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+### 🇺🇸 English Version
+This project is a Laravel authentication system integrated with **Laravel Socialite** to allow users to log in using **Google**, **GitHub**, and **Facebook**. It also includes a **forgot password** feature that sends reset emails through **Mailtrap**.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Since this project uses social logins, you **must use Ngrok** so that the callback URLs are publicly accessible.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ✨ Fitur / Features
 
-## Laravel Sponsors
+- ✅ Login & Register standar (email & password)
+- 🔐 Login dengan Google, GitHub, dan Facebook (Laravel Socialite)
+- 📩 Lupa password dengan pengiriman email (Mailtrap)
+- 📂 Validasi form dan notifikasi responsif
+- 📦 Struktur kode rapi dan siap dikembangkan lebih lanjut
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## ⚙️ Instalasi / Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+git clone https://github.com/vynnptra/laravel-auth-socialite-mailtrap.git
+cd laravel-auth-socialite-mailtrap
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🔧 Konfigurasi Environment (.env)
 
-## Code of Conduct
+Edit file `.env` dan isi bagian berikut:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```env
+# Database
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
-## Security Vulnerabilities
+# Mailtrap
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=your_mailtrap_username
+MAIL_PASSWORD=your_mailtrap_password
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=kevinnputraapratamaa@gmail.com
+MAIL_FROM_NAME="Laravel Auth"
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/google/callback
 
-## License
+# GitHub OAuth
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/github/callback
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Facebook OAuth
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+FACEBOOK_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/facebook/callback
+```
+
+> ⚠️ **Jangan lupa untuk mengganti `https://your-ngrok-url.ngrok.io` dengan URL Ngrok kamu yang aktif.**
+
+---
+
+## 🌐 Menjalankan dengan Ngrok
+
+1. Jalankan Laravel project:
+   ```bash
+   php artisan serve
+   ```
+
+2. Jalankan Ngrok (gantilah port jika perlu):
+   ```bash
+   ngrok http 8000
+   ```
+
+3. Salin URL HTTPS dari Ngrok dan tempelkan di `.env` untuk `*_REDIRECT_URI`.
+
+---
+
+## 🛠️ Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+---
+
+## 🧪 Pengujian / Testing
+
+Untuk mencoba fitur lupa password:
+1. Akses halaman login
+2. Klik “Lupa Password?”
+3. Masukkan email valid
+4. Periksa inbox email melalui Mailtrap (https://mailtrap.io)
+
+Untuk login sosial media:
+- Pastikan URL callback di dashboard Google/GitHub/Facebook sesuai dengan URL Ngrok kamu.
+
+---
+
+## 🏷️ Tags
+
+`laravel` `authentication` `socialite` `mailtrap` `login` `register` `forgot-password`  
+`laravel-socialite` `facebook-login` `google-login` `github-login` `ngrok` `email-testing`
+
+---
+
+## 👤 Author
+
+**Kevin Putra Pratama**  
+Pelajar RPL di SMKN1 Tengaran  
+[GitHub](https://github.com/vynnptra) | kevinnputraapratamaa@gmail.com
+```
