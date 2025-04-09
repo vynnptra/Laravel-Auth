@@ -1,33 +1,25 @@
-```markdown
+
 # Laravel Auth with Socialite (Google, GitHub, Facebook) & Mailtrap
 
-## 📌 Deskripsi Proyek / Project Description
+## 📌 Project Description
 
-### 🇮🇩 
-Project ini adalah implementasi sistem autentikasi dengan Laravel yang terintegrasi dengan **Laravel Socialite** untuk login menggunakan akun sosial media seperti **Google**, **GitHub**, dan **Facebook**. Fitur lainnya termasuk **lupa password** yang mengirim email reset password melalui **Mailtrap**.
-
-Karena menggunakan login sosial media, kamu **perlu menggunakan Ngrok** agar callback URL bisa diakses oleh pihak ketiga (Google, GitHub, dan Facebook).
-
----
-
-### 🇺🇸 
 This project is a Laravel authentication system integrated with **Laravel Socialite** to allow users to log in using **Google**, **GitHub**, and **Facebook**. It also includes a **forgot password** feature that sends reset emails through **Mailtrap**.
 
 Since this project uses social logins, you **must use Ngrok** so that the callback URLs are publicly accessible.
 
 ---
 
-## ✨ Fitur / Features
+## ✨ Features
 
-- ✅ Login & Register standar (email & password)
-- 🔐 Login dengan Google, GitHub, dan Facebook (Laravel Socialite)
-- 📩 Lupa password dengan pengiriman email (Mailtrap)
-- 📂 Validasi form dan notifikasi responsif
-- 📦 Struktur kode rapi dan siap dikembangkan lebih lanjut
+- ✅ Standard login & register (email & password)
+- 🔐 Social login with Google, GitHub, and Facebook (Laravel Socialite)
+- 📩 Forgot password via email (Mailtrap)
+- 📂 Form validation and responsive notifications
+- 📦 Clean code structure, easy to extend
 
 ---
 
-## ⚙️ Instalasi / Installation
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/vynnptra/laravel-auth-socialite-mailtrap.git
@@ -39,9 +31,9 @@ php artisan key:generate
 
 ---
 
-## 🔧 Konfigurasi Environment (.env)
+## 🔧 Environment Configuration (.env)
 
-Edit file `.env` dan isi bagian berikut:
+Edit your `.env` file and fill in the following:
 
 ```env
 # Database
@@ -75,27 +67,27 @@ FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
 FACEBOOK_REDIRECT_URI=https://your-ngrok-url.ngrok.io/auth/facebook/callback
 ```
 
-> ⚠️ Jangan lupa untuk mengganti `https://your-ngrok-url.ngrok.io` dengan URL Ngrok kamu yang aktif.
+> ⚠️ Replace `https://your-ngrok-url.ngrok.io` with your actual Ngrok HTTPS URL.
 
 ---
 
-## 🌐 Menjalankan dengan Ngrok
+## 🌐 Run with Ngrok
 
-1. Jalankan Laravel project:
+1. Start Laravel server:
    ```bash
    php artisan serve
    ```
 
-2. Jalankan Ngrok:
+2. Start Ngrok:
    ```bash
    ngrok http 8000
    ```
 
-3. Salin URL HTTPS dari Ngrok dan tempelkan di `.env` sebagai redirect URI.
+3. Copy the HTTPS Ngrok URL and paste it into your `.env` file as redirect URIs.
 
 ---
 
-## 🛠️ Migrasi Database
+## 🛠️ Database Migration
 
 ```bash
 php artisan migrate
@@ -103,17 +95,17 @@ php artisan migrate
 
 ---
 
-## 🧪 Pengujian / Testing
+## 🧪 Testing
 
-### Lupa Password
-1. Buka halaman login
-2. Klik “Lupa Password?”
-3. Masukkan email valid
-4. Cek email masuk melalui [Mailtrap](https://mailtrap.io)
+### Forgot Password
+1. Visit the login page
+2. Click “Forgot Password?”
+3. Enter a valid email
+4. Check the inbox via [Mailtrap](https://mailtrap.io)
 
-### Login Sosial Media
-- Pastikan URL callback sesuai dengan URL dari Ngrok yang sedang aktif.
-- Pastikan client ID dan secret sudah diatur di Google/GitHub/Facebook Developer Console.
+### Social Login
+- Ensure the callback URLs match the active Ngrok URL
+- Set the client ID and secret in your Google/GitHub/Facebook developer console
 
 ---
 
@@ -127,7 +119,6 @@ php artisan migrate
 ## 👤 Author
 
 **Kevin Putra Pratama**  
-Pelajar RPL di SMKN1 Tengaran  
+Software Engineering Student at SMKN1 Tengaran  
 [GitHub](https://github.com/vynnptra)  
 Email: kevinnputraapratamaa@gmail.com
-```
