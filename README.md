@@ -4,14 +4,14 @@
 
 ## 📌 Deskripsi Proyek / Project Description
 
-### 🇮🇩 Bahasa Indonesia
+### 🇮🇩 
 Project ini adalah implementasi sistem autentikasi dengan Laravel yang terintegrasi dengan **Laravel Socialite** untuk login menggunakan akun sosial media seperti **Google**, **GitHub**, dan **Facebook**. Fitur lainnya termasuk **lupa password** yang mengirim email reset password melalui **Mailtrap**.
 
 Karena menggunakan login sosial media, kamu **perlu menggunakan Ngrok** agar callback URL bisa diakses oleh pihak ketiga (Google, GitHub, dan Facebook).
 
 ---
 
-### 🇺🇸 English Version
+### 🇺🇸 
 This project is a Laravel authentication system integrated with **Laravel Socialite** to allow users to log in using **Google**, **GitHub**, and **Facebook**. It also includes a **forgot password** feature that sends reset emails through **Mailtrap**.
 
 Since this project uses social logins, you **must use Ngrok** so that the callback URLs are publicly accessible.
